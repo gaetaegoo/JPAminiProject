@@ -1,11 +1,12 @@
 package model.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,22 +17,32 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-@SequenceGenerator(name="desk_id_seq", sequenceName="hospital_desk_seq", initialValue=1, allocationSize=1)
 @Entity
 public class Desk {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="desk_id_seq")
 	@Column(name = "desk_id")
 	private int dID;
 
-	@Column(name = "patient")
-	private Patient pID;
+	private String dName;
+	
+	@OneToMany(mappedBy = "dID")
+	List<Patient> patients = new ArrayList<>();
 
-	@Column(name = "clinic")
-	private Clinic cID;
+	@OneToMany(mappedBy = "dID")
+	List<Clinic> clinics = new ArrayList<>();
 
-	@Column(name = "recipe")
-	private Recipe rID;
+	@OneToMany(mappedBy = "dID")
+	List<Recipe> recipes = new ArrayList<>();
+	
+	public int getPatientsCount() {
+		return patients.size();
+	}
 
+	@Override
+	public String toString() {
+		return "Desk [dID=" + dID + "]";
+	}
+
+	
 }

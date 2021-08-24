@@ -2,7 +2,10 @@ package model.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,5 +30,15 @@ public class Clinic {
 	private String test;
 
 	private String surgery;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "desk_id")
+	private Desk dID;
+
+	@Override
+	public String toString() {
+		return "Clinic [cID=" + cID + ", sign=" + sign + ", general=" + general + ", test=" + test + ", surgery="
+				+ surgery + "]";
+	}
 
 }

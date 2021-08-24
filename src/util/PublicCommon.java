@@ -6,7 +6,7 @@ import javax.persistence.Persistence;
 
 public class PublicCommon {
 	
-	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("hospitalDB");
+	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("oracleDB");
 	
 	public static EntityManager getEntityManager() {
 		// EntityManagerFactory 객체로부터 EntityManager 객체 반환

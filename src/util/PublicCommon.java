@@ -13,7 +13,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class PublicCommon {
-	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("hospitalDB");
+	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("oracleDB");
 	
 	//
 	public static EntityManager getEntityManager() {
